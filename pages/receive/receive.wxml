@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="user-msg">
+    <image class="avatar" src='{{avatar}}'></image>
+    <text class="name">{{nick}}</text>
+    <text class="date">{{time}}</text>
+  </view>
+  <view wx:if="{{status==-1}}">
+    <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信一键登录</button>
+  </view>
+  <view wx:if="{{status==0}}" class="rule-msg">
+    <view class="rule-tip">查看消息前请注意规则：</view>
+    <view wx:for="{{rules}}" wx:key="index">· {{item}}</view>
+  </view>
+  <view wx:if="{{status==0}}" class="btn-border">
+    <button bindtap='viewMsg'>查看</button>
+  </view>
+  <view wx:if="{{status==1}}">
+    <view wx:for="{{content}}" wx:key="index">{{item.data}}</view>
+  </view>
+  <view wx:if="{{status==2}}" class="msg-disabled">{{reason}}</view>
+</view>
+<view class="control">
+  <button open-type="share">分享给朋友</button>
+  <button class="send-btn" bindtap="toSendPage">我也要发消息</button>
+</view>

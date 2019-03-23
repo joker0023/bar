@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/send/send",
+    "pages/receive/receive"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "read-burn",
+    "navigationBarTextStyle":"black"
+  }
+}

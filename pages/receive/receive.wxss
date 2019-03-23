@@ -1,0 +1,62 @@
+/* pages/receive/receive.wxss */
+
+.rule-msg {
+  padding: 40rpx;
+}
+.rule-msg .rule-tip {
+  margin-bottom: 20rpx;
+}
+.rule-msg .rule-content {
+  font-size: small;
+  color: #999;
+  line-height: 1.5em;
+}
+
+.btn-border {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+  margin: 100rpx auto 0;
+  border: 1px solid red;
+  position: relative;
+}
+.btn-border button {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 90rpx;
+  background: red;
+  color: #fff;
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  line-height: 180rpx;
+}
+
+.msg-content {
+  padding: 20rpx;
+  color: #777;
+}
+
+.msg-disabled {
+  margin-top: 250rpx;
+  text-align: center;
+  color: #777;
+}
+
+.control {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  border-top: 1px solid #ccc;
+  padding: 20rpx 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.control button {
+  flex-grow: 1;
+  margin: 0 20rpx;
+}
+.control .send-btn {
+  background: rgba(73, 194, 101, 1);
+  color: #fff;
+}

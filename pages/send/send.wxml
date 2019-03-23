@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="user-msg">
+    <image wx:if="{{avatar!=null}}" class="avatar" src='{{avatar}}'></image>
+    <text class="name">{{nick}}</text>
+  </view>
+  <view class="rule-msg">
+    <view class="rule-tip">规则：</view>
+    <view class="rule-content">· 查看次数：1次</view>
+    <view class="rule-content">· 查看人数：无限制</view>
+    <view class="rule-content">· 查看时长：无限制</view>
+    <view class="rule-content">· 截至日期：无限制</view>
+  </view>
+  <view wx:if="{{status==-1}}">
+    <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信一键登录</button>
+  </view>
+  <form wx:if="{{status==0}}" class="msg-form" name="msg-form" bindsubmit="sendMsg">
+    <view class="form-group">
+      <textarea name="message" placeholder='点击输入文字'></textarea>
+    </view>
+    <view class="form-group">
+      <button form-type='submit'>发布</button>
+    </view>
+  </form>
+  <view wx:if="{{status==1}}">
+    <view class="success-msg">
+      <icon type='success'></icon>
+      <text> 发送成功</text>
+    </view>
+    <view class="control">
+      <button open-type="share">分享给朋友</button>
+      <button class="send-btn" bindtap="sendAgain">再发一条</button>
+    </view>
+  </view>
+</view>

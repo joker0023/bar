@@ -1,0 +1,36 @@
+.msg-form .form-group{
+  padding: 0 40rpx 20rpx;
+}
+.msg-form textarea {
+  border: 1px solid #ccc;
+  padding: 20rpx;
+  width: auto;
+}
+.msg-form button {
+  background: rgba(73, 194, 101, 1);
+  color: #fff;
+}
+
+.success-msg {
+  margin-top: 100rpx;
+  text-align: center;
+}
+.success-msg icon {
+  vertical-align: text-top;
+}
+
+.control {
+  display: flex;
+  padding: 20rpx 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 100rpx;
+}
+.control button {
+  flex-grow: 1;
+  margin: 0 20rpx;
+}
+.control .send-btn {
+  background: rgba(73, 194, 101, 1);
+  color: #fff;
+}
