@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true
@@ -18,7 +18,7 @@
 					"id": 0,
 					"name": "aa",
 					"pathName": "pages/receive/receive",
-					"query": "id=21",
+					"query": "id=1",
 					"scene": "1007"
 				}
 			]

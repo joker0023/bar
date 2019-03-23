@@ -24,7 +24,8 @@ App({
             callback && callback(self.globalData.token);
           } else {
             wx.showToast({
-              title: '登录失败!',
+              title: '登录失败',
+              icon: 'none'
             });
           }
         });
