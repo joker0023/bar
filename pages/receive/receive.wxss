@@ -37,6 +37,10 @@
   color: #777;
 }
 
+.msg-progress {
+  margin-top: 100rpx;
+}
+
 .msg-disabled {
   margin-top: 250rpx;
   text-align: center;

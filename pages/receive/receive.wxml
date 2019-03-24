@@ -17,6 +17,9 @@
   <view wx:if="{{status==1}}">
     <view wx:for="{{content}}" wx:key="index">{{item.data}}</view>
   </view>
+  <view wx:if="{{status==1}}" class="msg-progress">
+    <progress percent="{{percent}}" stroke-width="10"></progress>
+  </view>
   <view wx:if="{{status==2}}" class="msg-disabled">{{reason}}</view>
 </view>
 <view class="control">

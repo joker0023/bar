@@ -9,8 +9,9 @@ Page({
     content: [],
     status: -2,
     can_read: false,
+    percent: 100,
     reason: '该消息已经销毁',
-    rules: ['查看次数：1次', '查看人数：无限制', '查看时长：无限制', '截至日期：无限制']
+    rules: ['查看次数：1次', '查看人数：无限制', '查看时长：10秒', '截至日期：无限制']
   },
   onLoad: function (option) {
     var self = this;
@@ -60,11 +61,19 @@ Page({
             content: resp.data.content
           });
 
-          setTimeout(function() {
+          var percent = 100;
+          var intervalId = setInterval(function () {
+            percent = percent - 1;
             self.setData({
-              status: 2
+              percent: percent,
             });
-          }, 10000);
+            if (percent == 0) {
+              clearInterval(intervalId);
+              self.setData({
+                status: 2
+              });
+            }
+          }, 10000 / 100);
         }
       });
     } else {

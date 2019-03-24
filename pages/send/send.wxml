@@ -7,7 +7,7 @@
     <view class="rule-tip">规则：</view>
     <view class="rule-content">· 查看次数：1次</view>
     <view class="rule-content">· 查看人数：无限制</view>
-    <view class="rule-content">· 查看时长：无限制</view>
+    <view class="rule-content">· 查看时长：10秒</view>
     <view class="rule-content">· 截至日期：无限制</view>
   </view>
   <view wx:if="{{status==-1}}">
