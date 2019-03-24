@@ -9,21 +9,22 @@ Page({
   },
   onLoad: function () {
     var self = this;
-    app.getToken(function (token) {
-      self.token = token;
-      app.checkAndGetUserInfo(function (userInfo) {
-        if (!userInfo) {
-          self.setData({
-            status: -1
-          });
-          return;
-        }
+    self.setData({
+      status: -2
+    });
+    app.login(function(resp) {
+      if (resp.code == 0) {
+        self.token = resp.token;
         self.setData({
           status: 0,
-          avatar: userInfo.avatarUrl,
-          nick: userInfo.nickName
+          avatar: resp.userInfo.avatarUrl,
+          nick: resp.userInfo.nickName
         });
-      });
+      } else {
+        self.setData({
+          status: -1
+        });
+      }
     });
   },
   onShareAppMessage: function (resp) {
@@ -51,6 +52,7 @@ Page({
     if (!self.token) {
       wx.showToast({
         title: '登录超时!',
+        icon: 'none'
       });
       return;
     }
@@ -64,14 +66,8 @@ Page({
     });
   },
   getUserInfo: function (resp) {
-    var userInfo = app.setUserInfo(resp);
-    if (userInfo) {
-      this.setData({
-        status: 0,
-        avatar: userInfo.avatarUrl,
-        nick: userInfo.nickName
-      });
-    }
+    app.setUserInfo(resp);
+    this.onLoad();
   },
   sendAgain: function () {
     this.msgId = '';

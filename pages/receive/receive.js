@@ -14,18 +14,20 @@ Page({
   },
   onLoad: function (option) {
     var self = this;
+    self.setData({
+      status: -2
+    });
+    self.option = option;
     self.msgId = option.id;
-    app.getToken(function (token) {
-      self.token = token;
-      app.checkAndGetUserInfo(function (userInfo) {
-        if (!userInfo) {
-          self.setData({
-            status: -1
-          });
-          return;
-        }
+    app.login(function (resp) {
+      if (resp.code == 0) {
+        self.token = resp.token;
         self.getMsgOutLine();
-      });
+      } else {
+        self.setData({
+          status: -1
+        });
+      }
     });
   },
   getMsgOutLine: function() {
@@ -68,9 +70,8 @@ Page({
     })
   },
   getUserInfo: function (resp) {
-    if (app.setUserInfo(resp)) {
-      this.getMsgOutLine();
-    }
+    app.setUserInfo(resp);
+    this.onLoad(this.option);
   },
   onShareAppMessage: function () {
     var self = this;
