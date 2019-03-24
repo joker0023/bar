@@ -64,7 +64,7 @@ Page({
             self.setData({
               status: 2
             });
-          }, 2000);
+          }, 10000);
         }
       });
     } else {
