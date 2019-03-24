@@ -36,7 +36,7 @@ Page({
       if (resp.code == 0) {
         self.setData({
           status: 0,
-          avatar: resp.data.user.headimgurl,
+          avatar: resp.data.user.avatar,
           nick: resp.data.user.nickname,
           time: resp.data.time,
           can_read: resp.data.can_read,

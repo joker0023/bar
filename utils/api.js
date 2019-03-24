@@ -1,4 +1,4 @@
-var urlPrefix = 'http://www.exiangjian.cn/mimixinxi/public/index.php';
+var urlPrefix = 'https://www.exiangjian.cn/mimixinxi/public/index.php';
 var apiUrl = {
   login: urlPrefix + '/api/user/login',
   getMsgOutLine: urlPrefix + '/api/message/detail',
