@@ -50,9 +50,9 @@ Page({
       return;
     }
     if (!self.token) {
-      wx.showToast({
-        title: '登录超时!',
-        icon: 'none'
+      wx.showModal({
+        content: '登录超时!',
+        showCancel: false
       });
       return;
     }

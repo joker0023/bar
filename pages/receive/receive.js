@@ -34,6 +34,10 @@ Page({
     var self = this;
     api.getMsgOutLine(self.msgId, self.token, function (resp) {
       if (resp.code == 0) {
+        var reason = resp.data.reason;
+        if (!reason) {
+          reason = self.data.reason;
+        }
         self.setData({
           status: 0,
           avatar: resp.data.user.avatar,
@@ -41,7 +45,7 @@ Page({
           time: resp.data.time,
           can_read: resp.data.can_read,
           // rules: resp.data.rules,
-          reason: resp.data.reason
+          reason: reason
         });
       }
     });
@@ -55,6 +59,12 @@ Page({
             status: 1,
             content: resp.data.content
           });
+
+          setTimeout(function() {
+            self.setData({
+              status: 2
+            });
+          }, 2000);
         }
       });
     } else {

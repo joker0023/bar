@@ -28,19 +28,19 @@ var ajax = function (method, url, data, header, callback) {
       success: function (resp) {
         console.log('success: ', resp);
         if (resp.data.code != 0) {
-          wx.showToast({
-            title: '服务器出错',
-            icon: 'none'
-          })
+          wx.showModal({
+            content: '服务器出错',
+            showCancel: false
+          });
         }
         callback && callback(resp.data);
         resolve && resolve(resp.data);
       },
       fail: function (resp) {
         console.log('fail: ', resp);
-        wx.showToast({
-          title: '网络错误',
-          icon: 'none'
+        wx.showModal({
+          content: '网络错误',
+          showCancel: false
         });
       }
     });
