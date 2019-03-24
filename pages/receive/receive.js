@@ -10,7 +10,7 @@ Page({
     status: -2,
     can_read: false,
     reason: '该消息已经销毁',
-    rules: []
+    rules: ['查看次数：1次', '查看人数：无限制', '查看时长：无限制', '截至日期：无限制']
   },
   onLoad: function (option) {
     var self = this;
@@ -40,8 +40,8 @@ Page({
           nick: resp.data.user.nickname,
           time: resp.data.time,
           can_read: resp.data.can_read,
-          reason: resp.data.reason,
-          rules: resp.data.rules
+          // rules: resp.data.rules,
+          reason: resp.data.reason
         });
       }
     });

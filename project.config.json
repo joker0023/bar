@@ -34,7 +34,7 @@
 					"id": 0,
 					"name": "aa",
 					"pathName": "pages/receive/receive",
-					"query": "id=1",
+					"query": "id=2",
 					"scene": "1007"
 				}
 			]
