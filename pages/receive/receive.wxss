@@ -17,14 +17,14 @@
   height: 200rpx;
   border-radius: 100rpx;
   margin: 100rpx auto 0;
-  border: 1px solid red;
+  border: 1px solid #09bb07;
   position: relative;
 }
 .btn-border button {
   width: 180rpx;
   height: 180rpx;
   border-radius: 90rpx;
-  background: red;
+  background: #09bb07;
   color: #fff;
   position: absolute;
   top: 10rpx;
@@ -57,6 +57,9 @@
   margin: 0 20rpx;
 }
 .control .send-btn {
-  background: rgba(73, 194, 101, 1);
-  color: #fff;
+  background: white;
+  color: #1aad19;
+  border: 1px solid #09bb07;
+  padding-left: 12px;
+  padding-right: 12px;
 }
