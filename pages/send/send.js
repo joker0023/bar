@@ -31,15 +31,15 @@ Page({
     var self = this;
     if (resp.from === 'button') {
       return {
-        title: 'read-burn',
+        title: self.data.nick + '向你发了条重要信息，点击查看',
         path: '/pages/receive/receive?id=' + self.msgId,
-        imageUrl: '/image/bar.png'
+        imageUrl: '/image/logo.png'
       };
     } else {
       return {
-        title: 'read-burn',
+        title: '重要信息',
         path: '/pages/send/send',
-        imageUrl: '/image/bar.png'
+        imageUrl: '/image/logo.png'
       };
     }
   },

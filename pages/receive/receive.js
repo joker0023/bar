@@ -86,9 +86,9 @@ Page({
   onShareAppMessage: function () {
     var self = this;
     return {
-      title: 'read-burn',
+      title: self.data.nick + '向你发了条重要信息，点击查看',
       path: '/pages/receive/receive?id=' + self.msgId,
-      imageUrl: '/image/bar.png'
+      imageUrl: '/image/logo.png'
     };
   }
   
