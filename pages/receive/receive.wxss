@@ -1,64 +1,133 @@
 /* pages/receive/receive.wxss */
+.main-view {
+  position: absolute;
+  top: 52px;
+  bottom: 67px;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
 
 .rule-msg {
-  padding: 40rpx;
+  padding: 20px;
+  color: #666;
 }
 .rule-msg .rule-tip {
-  margin-bottom: 20rpx;
+  margin-bottom: 10px;
 }
 .rule-msg .rule-content {
   font-size: small;
-  color: #999;
-  line-height: 1.5em;
+  color: #888;
+  line-height: 1.8em;
 }
 
 .btn-border {
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 100rpx;
-  margin: 100rpx auto 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 50px auto 0;
   border: 1px solid #09bb07;
   position: relative;
 }
 .btn-border button {
-  width: 180rpx;
-  height: 180rpx;
-  border-radius: 90rpx;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
   background: #09bb07;
   color: #fff;
   position: absolute;
-  top: 10rpx;
-  left: 10rpx;
-  line-height: 180rpx;
+  top: 5px;
+  left: 5px;
+  line-height: 90px;
+}
+.report-btn {
+  color: #888;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .msg-content {
-  padding: 20rpx;
+  padding: 10px;
   color: #777;
 }
 
-.msg-progress {
-  margin-top: 100rpx;
+.time-load {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin: 50px auto 0;
+  border: 1px solid #09bb07;
+  line-height: 60px;
+  text-align: center;
+  font-size: 30px;
+  color: #09bb07;
+  opacity: 0.1;
+}
+@keyframes showTime
+{
+0% {opacity: 0.1}
+50% {opacity: 1}
+100% {opacity: 0.1}
 }
 
 .msg-disabled {
-  margin-top: 250rpx;
+  margin-top: 120px;
   text-align: center;
   color: #777;
 }
+
+.report-view {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.report-view .bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.4;
+  z-index: 0;
+}
+.report-view .report-form {
+  font-size: 14px;
+  background: #fff;
+  width: 200px;
+  padding-top: 20px;
+  margin: 100px auto 0;
+  position: relative;
+  z-index: 1;
+}
+.report-view button {
+  background: #09bb07;
+  color: #fff;
+  width: 160px;
+  height: 40px;
+  padding: 0;
+  line-height: 40px;
+  border-radius: 20px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
 
 .control {
   position: absolute;
   bottom: 0;
   display: flex;
   border-top: 1px solid #ccc;
-  padding: 20rpx 40rpx;
+  padding: 10px 10px;
   width: 100%;
   box-sizing: border-box;
+  height: 65px;
 }
 .control button {
   flex-grow: 1;
-  margin: 0 20rpx;
+  margin: 0 10px;
 }
 .control .send-btn {
   background: white;

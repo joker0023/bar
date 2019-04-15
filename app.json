@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/send/send",
+    "pages/mine/mine",
     "pages/receive/receive"
   ],
   "window":{
@@ -8,5 +9,17 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "重要信息",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/send/send",
+        "text": "发消息"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
   }
 }

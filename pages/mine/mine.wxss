@@ -1,0 +1,74 @@
+/* pages/mine/mine.wxss */
+.hidden {
+  display: none;
+}
+.user-info {
+  box-sizing: border-box;
+  padding: 20px 0;
+  border: 1px solid #bbb;
+  border-left: 0;
+  border-right: 0;
+  background: #f0f0f0;
+  min-height: 100px;
+}
+.user-info .avatar {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin: 0 20px;
+  vertical-align: middle;
+}
+.tab {
+  min-height: 50px;
+}
+.tab view {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  line-height: 50px;
+  border-bottom: 1px solid #fff;
+}
+.tab .active {
+  border-bottom-color: #1aada9;
+}
+.main-view {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 170px;
+  /* overflow: auto; */
+}
+.main-view .item {
+  height: 50px;
+  background: #f0f0f0;
+  line-height: 50px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.main-view .item .avatar {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.main-view .item text {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #666;
+}
+.main-view .item .date {
+  float: right;
+  line-height: 50px;
+  color: #b2b2b2;
+}
+.moreList {
+  text-align: center;
+  color: #b2b2b2;
+  padding-bottom: 20px;
+}

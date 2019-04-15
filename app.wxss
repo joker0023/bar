@@ -1,47 +1,63 @@
 /**app.wxss**/
 .container {
-  padding: 20rpx;
-  color: #666;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: #353535;
+  font-size: 16px;
 } 
 
 .user-msg {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  right: 0px;
+  box-sizing: border-box;
+  height: 52px;
+  padding: 5px 0;
   border: 1px solid #eee;
   border-left: 0;
   border-right: 0;
-  padding: 10rpx 0;
-  margin-bottom: 50rpx;
-  min-height: 80rpx;
 }
 .user-msg .avatar {
   display: inline-block;
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
-  margin-right: 40rpx;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
   vertical-align: middle;
 }
-
 .user-msg .date {
   float: right;
-  line-height: 80rpx;
-  color: #999;
-}
-
-.rule-msg {
-  padding: 40rpx;
-}
-.rule-msg .rule-tip {
-  margin-bottom: 20rpx;
-}
-.rule-msg .rule-content {
-  font-size: small;
-  color: #999;
-  line-height: 1.5em;
+  line-height: 40px;
+  color: #b2b2b2;
+  margin-right: 10px;
 }
 
 .login-btn {
-  background: rgba(73, 194, 101, 1);
+  background: #1aad19;
   color: #fff;
-  margin-top: 300rpx;
+  margin-top: 150px;
   width: 80%;
 }
+
+.msg-content {
+  padding: 20px;
+}
+.msg-content view {
+  margin-top: 10px;
+}
+.msg-content image {
+  display: block;
+  width: 50%;
+  margin: 10px auto 0;
+}
+
+form .form-group{
+  padding: 0 20px 10px;
+}
+
+

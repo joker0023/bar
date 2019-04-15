@@ -1,9 +1,14 @@
-var urlPrefix = 'https://www.exiangjian.cn/mimixinxi/public/index.php';
+var urlPrefix = 'http://doc.hoka.net.cn/mock/11';
 var apiUrl = {
   login: urlPrefix + '/api/user/login',
   getMsgOutLine: urlPrefix + '/api/message/detail',
   getMsgDetail: urlPrefix + '/api/message/content',
-  sendMsg: urlPrefix + '/api/message/add'
+  sendMsg: urlPrefix + '/api/message/add',
+  uploadImg: urlPrefix + '/api/common/upload',
+  getReadList: urlPrefix + '/api/message/read_list',
+  getSendList: urlPrefix + '/api/message/send_list',
+  report: urlPrefix + '/api/report/add',
+  captureScreen: urlPrefix + '/api/common/capture_screen'
 };
 
 var ajax = function (method, url, data, header, callback) {
@@ -20,12 +25,15 @@ var ajax = function (method, url, data, header, callback) {
     header = {};
   }
   return new Promise((resolve, reject) => {
+    console.log(url);
+    console.log(data, header);
     wx.request({
       method: method,
       url: url,
       data: JSON.stringify(data),
       header: header,
       success: function (resp) {
+        wx.hideLoading();
         console.log('success: ', resp);
         if (resp.data.code != 0) {
           wx.showModal({
@@ -37,6 +45,7 @@ var ajax = function (method, url, data, header, callback) {
         resolve && resolve(resp.data);
       },
       fail: function (resp) {
+        wx.hideLoading();
         console.log('fail: ', resp);
         wx.showModal({
           content: '网络错误',
@@ -60,60 +69,99 @@ var login = function (code, userInfo, callback) {
     code: code,
     userInfo: userInfo
   }
-  console.log('==login== ', data);
   return doPost(apiUrl.login, data, null, callback);
 };
 
 var getMsgOutLine = function (id, token, callback) {
-  console.log('==getMsgOutLine== ', 'id: ' + id + ', token: ' + token);
   var url = apiUrl.getMsgOutLine + '?id=' + id;
   var header = {
     TOKEN: token
   };
   return doGet(url, header, callback);
-  // callback({
-  //   code: 0,
-  //   message: "OK",
-  //   data: {
-  //     user: {
-  //       nickname: "abc",
-  //       headimgurl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553350453813&di=af38385d455ec29b3073b8a61fad1c20&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201507%2F09%2F20150709103047_3G8k4.jpeg"
-  //     },
-  //     time: "2019-02-30",
-  //     is_mine: false,
-  //     can_read: false,
-  //     reason: "该消息已经销毁",
-  //     rules: ['查看次数：1次', '查看人数：无限制', '查看时长：无限制', '截至日期：无限制']
-  //   }
-  // });
 };
 var getMsgDetail = function (id, token, callback) {
-  console.log('==getMsgDetail== ', 'id: ' + id + ', token: ' + token);
   var url = apiUrl.getMsgDetail + '?id=' + id;
   var header = {
     TOKEN: token
   };
   return doGet(url, header, callback);
 };
-var sendMsg = function (msg, token, callback) {
+var sendMsg = function (param, token, callback) {
   var header = {
     TOKEN: token
   };
-  var data = {
-    content: [
-      {
-        type: 'text',
-        data: msg
+  return doPost(apiUrl.sendMsg, param, header, callback);
+};
+
+var uploadImg = function (filePath, token, callback) {
+  wx.uploadFile({
+    url: apiUrl.uploadImg,
+    filePath: filePath,
+    name: 'file',
+    success: function(resp) {
+      wx.hideLoading();
+      console.log('success: ', resp);
+      let data = resp.data;
+      if (typeof data == 'string') {
+        data = JSON.parse(data);
       }
-    ]
+      callback && callback(data);
+    },
+    fail: function(resp) {
+      wx.hideLoading();
+      console.log('fail: ', resp);
+      wx.showModal({
+        content: '上传出错',
+        showCancel: false
+      });
+    }
+  });
+};
+
+var getReadList = function (page, token, callback) {
+  var url = apiUrl.getReadList + '?page=' + page;
+  var header = {
+    TOKEN: token
   };
-  console.log('==sendMsg== token: ' + token, data);
-  return doPost(apiUrl.sendMsg, data, header, callback);
+  return doGet(url, header, callback);
+};
+
+var getSendList = function (page, token, callback) {
+  var url = apiUrl.getSendList + '?page=' + page;
+  var header = {
+    TOKEN: token
+  };
+  return doGet(url, header, callback);
+};
+
+var report = function (type, token, callback) {
+  var data = {
+    type: type
+  };
+  var header = {
+    TOKEN: token
+  };
+  return doPost(apiUrl.report, data, header, callback);
+};
+
+var captureScreen = function (msgId, token, callback) {
+  var data = {
+    message_id: msgId
+  };
+  var header = {
+    TOKEN: token
+  };
+  return doPost(apiUrl.captureScreen, data, header, callback);
 };
 
 module.exports = {
   login: login,
   getMsgOutLine: getMsgOutLine,
   getMsgDetail: getMsgDetail,
-  sendMsg: sendMsg
+  sendMsg: sendMsg,
+  uploadImg: uploadImg,
+  getReadList: getReadList,
+  getSendList: getSendList,
+  report: report,
+  captureScreen: captureScreen
 }

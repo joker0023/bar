@@ -1,18 +1,68 @@
-.msg-form .form-group{
-  padding: 0 40rpx 20rpx;
+.main-view {
+  position: absolute;
+  top: 52px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.msg-form {
+  font-size: 14px;
 }
 .msg-form textarea {
   border: 1px solid #ccc;
-  padding: 20rpx;
+  padding: 10px;
   width: auto;
+  height: 100px;
 }
-.msg-form button {
+.msg-form .form-control-btn {
+  display: inline-block;
+  width: 30%;
+  margin: 0 10%;
+  font-size: 14px;
+}
+
+.rule-form {
+  font-size: 12px;
+  color: #666;
+}
+.rule-form .submit {
   background: rgba(73, 194, 101, 1);
   color: #fff;
+  margin-bottom: 20px;
+}
+.rule-form checkbox-group {
+  display: inline-block;
+}
+.rule-form checkbox {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.rule-form input {
+  display: inline-block;
+  width: 50px;
+  border: 1px solid #ccc;
+  vertical-align: middle
+}
+.rule-form .unvalid {
+  color: #ccc;
+}
+
+form .error input,
+form .error textarea {
+  animation: borderFlash 1.5s;
+}
+@keyframes borderFlash {
+  0% {border-color: #ccc}
+  25% {border-color: red}
+  50% {border-color: #ccc}
+  75% {border-color: red}
+  100% {border-color: #ccc}
 }
 
 .success-msg {
-  margin-top: 100rpx;
+  margin-top: 50px;
   text-align: center;
 }
 .success-msg icon {
@@ -21,14 +71,14 @@
 
 .control {
   display: flex;
-  padding: 20rpx 40rpx;
+  padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 100rpx;
+  margin-top: 50px;
 }
 .control button {
   flex-grow: 1;
-  margin: 0 20rpx;
+  margin: 0 10px;
 }
 .control .send-btn {
   background: rgba(73, 194, 101, 1);

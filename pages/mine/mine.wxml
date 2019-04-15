@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="user-info">
+    <image class="avatar" src='{{avatar}}'></image>
+    <text class="name">{{nick}}</text>
+  </view>
+  <view class="tab">
+    <view class="receive {{tabType==1?'active':''}}" data-type="1" bindtap="switchTab">我查看的</view>
+    <view class="send {{tabType==2?'active':''}}" data-type="2" bindtap="switchTab">我发布的</view>
+  </view>
+  <scroll-view wx:if="{{status>=0}}" class="main-view" scroll-y>
+    <view wx:if="{{tabType==1}}">
+      <view class="item" wx:for="{{readList}}" wx:key="index">
+        <image class="avatar" src="{{item.user.avatar}}"></image>
+        <text>{{item.user.nickname}}</text>
+        <text class="date">{{item.time}}</text>
+      </view>
+      <view wx:if="{{readPage<0}}" class="moreList">没有更多了</view>
+      <view wx:else class="moreList" bindtap='showMoreReadList'>查看更多</view>
+    </view>
+    <view wx:if="{{tabType==2}}">
+      <view class="item" wx:for="{{sendList}}" wx:key="index" data-id="{{item.id}}" bindtap='toDetail'>
+        <text>{{item.title}}</text>
+        <text class="date">{{item.time}}</text>
+      </view>
+      <view wx:if="{{sendPage<0}}" class="moreList">没有更多了</view>
+      <view wx:else class="moreList" bindtap='showMoreSendList'>查看更多</view>
+    </view>
+  </scroll-view>
+</view>
