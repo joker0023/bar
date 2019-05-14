@@ -41,7 +41,7 @@ Page({
         self.token = resp.token;
         self.getMsgOutLine(function(data) {
           if(data.is_mine) {
-            self.viewMsg();
+            //self.viewMsg();
           }
         });
       } else {
@@ -63,7 +63,7 @@ Page({
         let limitTime = self.data.limitTime;
         rules.forEach(r => {
           resp.data.rules.forEach(r2 => {
-            if (r.type == r2.type) {
+            if (r.type == r2.type && r2.data) {
               r.data = r2.data;
               if (r.type == 'second_limit' && !isNaN(r2.data)) {
                 limitTime = parseInt(r2.data);
@@ -91,12 +91,17 @@ Page({
     if (self.data.can_read) {
       wx.showLoading();
       wx.onUserCaptureScreen(function (res) {
-        wx.showModal({
-          title: '警告',
-          content: '此页面不允许截屏，达到三次将被拉入黑名单!',
-          showCancel: false
+        api.captureScreen(self.msgId, self.token, function(resp) {
+          var message = '请不要截图！违规3次后将不能再查看消息';
+          if (resp.code == 0 && resp.message){
+            message = resp.message;
+          }
+            wx.showModal({
+              title: '警告',
+              content: message,
+              showCancel: false
+            });
         });
-        api.captureScreen(self.msgId, self.token);
       });
       api.getMsgDetail(self.msgId, self.token, function(resp) {
         if (resp.code == 0) {

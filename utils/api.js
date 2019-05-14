@@ -1,14 +1,14 @@
-var urlPrefix = 'http://doc.hoka.net.cn/mock/11';
+var urlPrefix = 'https://message.hoka.net.cn';
 var apiUrl = {
   login: urlPrefix + '/api/user/login',
   getMsgOutLine: urlPrefix + '/api/message/detail',
   getMsgDetail: urlPrefix + '/api/message/content',
   sendMsg: urlPrefix + '/api/message/add',
-  uploadImg: urlPrefix + '/api/common/upload',
+  uploadImg: urlPrefix + '/api/message/upload',
   getReadList: urlPrefix + '/api/message/read_list',
   getSendList: urlPrefix + '/api/message/send_list',
-  report: urlPrefix + '/api/report/add',
-  captureScreen: urlPrefix + '/api/common/capture_screen'
+  report: urlPrefix + '/api/message/report',
+  captureScreen: urlPrefix + '/api/message/capture_screen'
 };
 
 var ajax = function (method, url, data, header, callback) {
@@ -37,7 +37,7 @@ var ajax = function (method, url, data, header, callback) {
         console.log('success: ', resp);
         if (resp.data.code != 0) {
           wx.showModal({
-            content: '服务器出错',
+            content: resp.data.message || '服务器出错',
             showCancel: false
           });
         }
@@ -97,7 +97,10 @@ var uploadImg = function (filePath, token, callback) {
   wx.uploadFile({
     url: apiUrl.uploadImg,
     filePath: filePath,
-    name: 'file',
+    name: 'image',
+    header: {
+      TOKEN: token
+    },
     success: function(resp) {
       wx.hideLoading();
       console.log('success: ', resp);

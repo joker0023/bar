@@ -11,7 +11,7 @@
 
   <view wx:if="{{status>=0}}" class="main-view">
     <view wx:if="{{status==0}}" class="rule-msg">
-      <view class="rule-tip">查看消息前请注意规则：</view>
+      <view wx:if="{{status==0}}" class="rule-tip">查看消息前请注意规则：</view>
       <block wx:for="{{rules}}" wx:key="index">
         <view wx:if="{{item.type=='reading_amount'}}" class="rule-content">· 查看次数: {{item.data}}</view>
         <view wx:if="{{item.type=='second_limit'}}" class="rule-content">· 查看时长: {{item.data}}</view>

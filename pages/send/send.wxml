@@ -35,18 +35,18 @@
             <checkbox value="1" checked='checked'></checkbox>
           </checkbox-group>
           每人可查看次数：
-          <input name="reading_amount" type="number"></input>
+          <input name="reading_amount" type="number" value="1"></input>
         </view>
         <view class="form-group {{rule.second_limit.unvalid}} {{rule.second_limit.error}}">
           <checkbox-group bindchange="checkTap" id="second_limit">
-            <checkbox value="1" checked='checked'></checkbox>
+            <checkbox value="1" checked=''></checkbox>
           </checkbox-group>
           <input name="second_limit" type="number"></input>
           秒后销毁消息
         </view>
         <view class="form-group {{rule.user_limit.unvalid}} {{rule.user_limit.error}}">
           <checkbox-group bindchange="checkTap" id="user_limit">
-            <checkbox value="1" checked='checked'></checkbox>
+            <checkbox value="1" checked=''></checkbox>
           </checkbox-group>
           人数限制：
           <input name="user_limit" type="number"></input>

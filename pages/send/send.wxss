@@ -43,6 +43,7 @@
   display: inline-block;
   width: 50px;
   border: 1px solid #ccc;
+  text-align: center;
   vertical-align: middle
 }
 .rule-form .unvalid {

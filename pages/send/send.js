@@ -15,11 +15,11 @@ Page({
         error: ''
       },
       second_limit: {
-        unvalid: '',
+        unvalid: 'unvalid',
         error: ''
       },
       user_limit: {
-        unvalid: '',
+        unvalid: 'unvalid',
         error: ''
       }
     }
@@ -165,7 +165,7 @@ Page({
 
     let sendObj = {
       content: self.data.content,
-      rule: ruleObj
+      rules: ruleObj
     };
 
     api.sendMsg(sendObj, self.token, function(resp) {
@@ -198,8 +198,8 @@ Page({
     this.msgId = '';
     var rule = this.data.rule;
     rule.reading_amount.unvalid = '';
-    rule.second_limit.unvalid = '';
-    rule.user_limit.unvalid = '';
+    rule.second_limit.unvalid = 'unvalid';
+    rule.user_limit.unvalid = 'unvalid';
     this.setData({
       status: 0,
       textMsg: '',
