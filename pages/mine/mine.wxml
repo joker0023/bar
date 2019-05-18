@@ -9,7 +9,7 @@
   </view>
   <scroll-view wx:if="{{status>=0}}" class="main-view" scroll-y>
     <view wx:if="{{tabType==1}}">
-      <view class="item" wx:for="{{readList}}" wx:key="index">
+      <view class="item" wx:for="{{readList}}" wx:key="index" data-id="{{item.id}}" bindtap='toDetail'>
         <image class="avatar" src="{{item.user.avatar}}"></image>
         <text>{{item.user.nickname}}</text>
         <text class="date">{{item.time}}</text>

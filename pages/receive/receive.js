@@ -10,7 +10,7 @@ Page({
     status: -2,
     is_mine: false,
     can_read: false,
-    limitTime: 10,
+    limitTime: 0,
     reason: '该消息已经销毁',
     reported: false,
     rules: [
@@ -65,7 +65,7 @@ Page({
           resp.data.rules.forEach(r2 => {
             if (r.type == r2.type && r2.data) {
               r.data = r2.data;
-              if (r.type == 'second_limit' && !isNaN(r2.data)) {
+              if (r.type == 'second_limit' && !isNaN(r2.data) && r2.data > 0) {
                 limitTime = parseInt(r2.data);
               }
             }
@@ -88,7 +88,7 @@ Page({
   },
   viewMsg: function () {
     var self = this;
-    if (self.data.can_read) {
+    if (self.data.can_read || self.data.is_mine) {
       wx.showLoading();
       wx.onUserCaptureScreen(function (res) {
         api.captureScreen(self.msgId, self.token, function(resp) {
@@ -105,32 +105,19 @@ Page({
       });
       api.getMsgDetail(self.msgId, self.token, function(resp) {
         if (resp.code == 0) {
+          var limitTime = self.data.limitTime;
+          if (self.data.is_mine) {
+            limitTime = 0;
+          }
           self.setData({
             status: 1,
-            content: resp.data.content
+            content: resp.data.content,
+            limitTime: limitTime
           });
-          if(self.data.is_mine) {
-            return;
-          }
 
-          var limitTime = self.data.limitTime;
-          var intervalId = setInterval(function () {
-            limitTime = limitTime - 1;
-            const animation = wx.createAnimation({
-              duration: 500
-            });
-            animation.opacity(1).step().opacity(0.1).step();
-            self.setData({
-              limitTime: limitTime,
-              timeAnimation: animation.export()
-            });
-            if (limitTime <= 0) {
-              clearInterval(intervalId);
-              self.setData({
-                status: 2
-              });
-            }
-          }, 1000);
+          if (limitTime > 0) {
+            self.countDown();
+          }
         }
       });
     } else {
@@ -138,6 +125,22 @@ Page({
         status: 2
       });
     }
+  },
+  countDown: function () {
+    var self = this;
+    var limitTime = self.data.limitTime;
+    var intervalId = setInterval(function () {
+      limitTime = limitTime - 1;
+      self.setData({
+        limitTime: limitTime
+      });
+      if (limitTime <= 0) {
+        clearInterval(intervalId);
+        self.setData({
+          status: 2
+        });
+      }
+    }, 1000);
   },
   toSendPage: function () {
     wx.switchTab({

@@ -62,6 +62,7 @@
   font-size: 30px;
   color: #09bb07;
   opacity: 0.1;
+  animation: showTime 1s infinite;
 }
 @keyframes showTime
 {

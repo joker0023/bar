@@ -34,7 +34,7 @@ var ajax = function (method, url, data, header, callback) {
       header: header,
       success: function (resp) {
         wx.hideLoading();
-        console.log('success: ', resp);
+        console.log('respose obj: ', resp);
         if (resp.data.code != 0) {
           wx.showModal({
             content: resp.data.message || '服务器出错',
@@ -103,7 +103,7 @@ var uploadImg = function (filePath, token, callback) {
     },
     success: function(resp) {
       wx.hideLoading();
-      console.log('success: ', resp);
+      console.log('respose obj: ', resp);
       let data = resp.data;
       if (typeof data == 'string') {
         data = JSON.parse(data);

@@ -87,7 +87,7 @@ Page({
             let content = self.data.content;
             content.push({
               type: 'image',
-              data: data.data.hash,
+              data: data.data.url,
               src: tempFilePaths[0]
             });
             self.setData({

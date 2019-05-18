@@ -32,9 +32,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "aa",
+					"name": "other",
 					"pathName": "pages/receive/receive",
-					"query": "id=2",
+					"query": "id=18",
 					"scene": 1007
 				}
 			]
